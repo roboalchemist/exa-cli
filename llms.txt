@@ -1,0 +1,32 @@
+# exa-cli
+
+> CLI for the Exa AI search API — search, find similar, get answers, retrieve contents, code context.
+
+## Quick Start
+- Install: `brew install roboalchemist/tap/exa-cli`
+- Auth: `export EXA_API_KEY=...`
+- Usage: `exa search "query" --json`
+
+## Commands
+- search: Search the web (`exa search "query" -n 10 --type auto`)
+- contents: Get page contents (`exa contents URL --text --summary`)
+- similar: Find similar pages (`exa similar URL -n 10`)
+- answer: AI answer with citations (`exa answer "question" --stream`)
+- context: Code context search (`exa context "query" --tokens 5000`)
+- usage: API usage stats (`exa usage --json`)
+- auth: Configure API key
+- docs: Print full README
+- completion: Shell completions (bash/zsh/fish/powershell)
+- skill: Claude Code skill management (print/add)
+
+## Output Formats
+- `--json` (`-j`) for structured output (all commands)
+- `--plaintext` (`-p`) for tab-separated piping
+- `--fields` for field selection in JSON mode
+- `--jq` for built-in JQ filtering
+
+## Search Types
+- auto (default), fast (<400ms), deep (comprehensive), neural (semantic)
+
+## Authentication
+Set `EXA_API_KEY` environment variable or run `exa auth`.
