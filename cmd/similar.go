@@ -39,7 +39,7 @@ Examples:
 
 func init() {
 	f := similarCmd.Flags()
-	f.IntVarP(&similarNumResults, "num-results", "n", 10, "Max results")
+	f.IntVarP(&similarNumResults, "num-results", "n", 25, "Max results")
 	f.BoolVar(&similarExcludeSource, "exclude-source", false, "Exclude the source domain from results")
 	f.StringSliceVar(&similarIncDomains, "include-domains", nil, "Only include these domains")
 	f.StringSliceVar(&similarExcDomains, "exclude-domains", nil, "Exclude these domains")

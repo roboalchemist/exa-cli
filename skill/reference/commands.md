@@ -11,24 +11,22 @@
 | `--fields` | | Comma-separated fields for JSON output |
 | `--jq` | | JQ expression to filter JSON output |
 
-## Commands
-
-### `exa search [query]`
+## `exa search [query]`
 
 Search the web using Exa AI.
 
 | Flag | Short | Default | Description |
 |------|-------|---------|-------------|
-| `--num-results` | `-n` | 10 | Max results (max 100) |
+| `--num-results` | `-n` | 25 | Max results (max 100). 1-25 same price tier. |
 | `--type` | `-t` | auto | Search type: auto\|fast\|deep\|neural |
-| `--category` | | | Category: company\|news\|research_paper\|tweet\|github |
-| `--include-domains` | | | Only search these domains |
+| `--category` | | | company\|news\|research_paper\|tweet\|github\|linkedin_profile\|pdf\|personal_site |
+| `--include-domains` | | | Only search these domains (comma-separated) |
 | `--exclude-domains` | | | Exclude these domains |
 | `--start-date` | | | Published after (YYYY-MM-DD) |
 | `--end-date` | | | Published before (YYYY-MM-DD) |
 | `--include-text` | | | Text that must appear in results |
 | `--exclude-text` | | | Text that must NOT appear |
-| `--text` | | true | Include full text in results |
+| `--text` | | false | Include full text in results (adds $0.001/result) |
 | `--text-max-chars` | | 10000 | Max chars for text content |
 | `--highlights` | | false | Include LLM-selected highlights |
 | `--summary` | | false | Include LLM summary |
@@ -37,26 +35,23 @@ Search the web using Exa AI.
 | `--moderation` | | false | Enable content safety moderation |
 | `--subpages` | | 0 | Number of subpages to crawl per result |
 
-### `exa contents [urls...]`
+## `exa answer [query]`
 
-Get page contents by URL.
+Get an AI-powered answer with citations.
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--text` | true | Include full text |
-| `--text-max-chars` | 10000 | Max chars for text |
-| `--highlights` | false | Include highlights |
-| `--summary` | false | Include summary |
-| `--max-age-hours` | -1 | Content freshness control |
-| `--subpages` | 0 | Subpages to crawl |
+| `--stream` | false | Stream the answer token by token |
+| `--text` | false | Include full text in citation sources |
+| `--output-schema` | | Path to JSON schema file for structured output |
 
-### `exa similar [url]`
+## `exa similar [url]`
 
 Find pages similar to a URL.
 
 | Flag | Short | Default | Description |
 |------|-------|---------|-------------|
-| `--num-results` | `-n` | 10 | Max results |
+| `--num-results` | `-n` | 25 | Max results. 1-25 same price tier. |
 | `--exclude-source` | | false | Exclude the source domain |
 | `--include-domains` | | | Only include these domains |
 | `--exclude-domains` | | | Exclude these domains |
@@ -66,17 +61,20 @@ Find pages similar to a URL.
 | `--highlights` | | false | Include highlights |
 | `--category` | | | Category filter |
 
-### `exa answer [query]`
+## `exa contents [urls...]`
 
-Get an AI-powered answer with citations.
+Get page contents by URL.
 
 | Flag | Default | Description |
 |------|---------|-------------|
-| `--stream` | false | Stream the answer |
-| `--text` | false | Include full text in citations |
-| `--output-schema` | | JSON schema file for structured output |
+| `--text` | true | Include full text |
+| `--text-max-chars` | 10000 | Max chars for text |
+| `--highlights` | false | Include highlights |
+| `--summary` | false | Include summary |
+| `--max-age-hours` | -1 | Content freshness (-1=cache, 0=always livecrawl) |
+| `--subpages` | 0 | Subpages to crawl |
 
-### `exa context [query]`
+## `exa context [query]`
 
 Get code context from Exa Code.
 
@@ -84,7 +82,7 @@ Get code context from Exa Code.
 |------|---------|-------------|
 | `--tokens` | 0 | Token limit (0=dynamic) |
 
-### `exa usage`
+## `exa usage`
 
 Show API usage and costs.
 
@@ -92,20 +90,18 @@ Show API usage and costs.
 |------|---------|-------------|
 | `--start-date` | 30 days ago | Start of period |
 | `--end-date` | now | End of period |
-| `--key-id` | | Specific API key ID |
+| `--key-id` | | Specific API key ID (auto-detects if omitted) |
 
-### `exa auth`
+## `exa auth`
 
-Configure API key authentication interactively.
+Configure API key interactively. Stores in `~/.exa-auth.json` (mode 0600).
 
-### `exa docs`
+Non-interactive mode requires `EXA_API_KEY` env var.
 
-Print the full README documentation to stdout.
-
-### `exa completion [bash|zsh|fish|powershell]`
+## `exa completion [bash|zsh|fish|powershell]`
 
 Generate shell completion scripts.
 
-### `exa skill print|add`
+## `exa skill print|add`
 
 Print or install the embedded Claude Code skill.

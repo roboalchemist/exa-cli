@@ -17,7 +17,7 @@ Search the web using Exa AI.
 
 | Flag | Short | Default | Description |
 |------|-------|---------|-------------|
-| `--num-results` | `-n` | 10 | Max results (max 100) |
+| `--num-results` | `-n` | 25 | Max results (max 100). 1-25 same price tier. |
 | `--type` | `-t` | auto | Search type: auto\|fast\|deep\|neural |
 | `--category` | | | company\|news\|research_paper\|tweet\|github\|linkedin_profile\|pdf\|personal_site |
 | `--include-domains` | | | Only search these domains (comma-separated) |
@@ -26,7 +26,7 @@ Search the web using Exa AI.
 | `--end-date` | | | Published before (YYYY-MM-DD) |
 | `--include-text` | | | Text that must appear in results |
 | `--exclude-text` | | | Text that must NOT appear |
-| `--text` | | true | Include full text in results |
+| `--text` | | false | Include full text in results (adds $0.001/result) |
 | `--text-max-chars` | | 10000 | Max chars for text content |
 | `--highlights` | | false | Include LLM-selected highlights |
 | `--summary` | | false | Include LLM summary |
@@ -51,7 +51,7 @@ Find pages similar to a URL.
 
 | Flag | Short | Default | Description |
 |------|-------|---------|-------------|
-| `--num-results` | `-n` | 10 | Max results |
+| `--num-results` | `-n` | 25 | Max results. 1-25 same price tier. |
 | `--exclude-source` | | false | Exclude the source domain |
 | `--include-domains` | | | Only include these domains |
 | `--exclude-domains` | | | Exclude these domains |

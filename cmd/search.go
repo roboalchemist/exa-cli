@@ -54,7 +54,7 @@ Examples:
 
 func init() {
 	f := searchCmd.Flags()
-	f.IntVarP(&searchNumResults, "num-results", "n", 10, "Max results (max 100)")
+	f.IntVarP(&searchNumResults, "num-results", "n", 25, "Max results (max 100)")
 	f.StringVarP(&searchType, "type", "t", "auto", "Search type: auto|fast|deep|neural")
 	f.StringVar(&searchCategory, "category", "", "Category: company|news|research_paper|tweet|github|etc")
 	f.StringSliceVar(&searchIncDomains, "include-domains", nil, "Only search these domains")
@@ -63,7 +63,7 @@ func init() {
 	f.StringVar(&searchEndDate, "end-date", "", "Published before (YYYY-MM-DD)")
 	f.StringVar(&searchIncludeText, "include-text", "", "Text that must appear in results")
 	f.StringVar(&searchExcludeText, "exclude-text", "", "Text that must NOT appear in results")
-	f.BoolVar(&searchText, "text", true, "Include full text in results")
+	f.BoolVar(&searchText, "text", false, "Include full text in results (adds $0.001/result)")
 	f.IntVar(&searchTextMax, "text-max-chars", 10000, "Max chars for text content")
 	f.BoolVar(&searchHighlights, "highlights", false, "Include LLM-selected highlights")
 	f.BoolVar(&searchSummary, "summary", false, "Include LLM summary")
